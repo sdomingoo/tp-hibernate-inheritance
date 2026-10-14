@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+
+    <persistence-unit name="tp-inheritance-pu" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Entités pour la stratégie SINGLE_TABLE -->
+        <class>com.tp.heritage.singletable.Vehicule</class>
+        <class>com.tp.heritage.singletable.Voiture</class>
+        <class>com.tp.heritage.singletable.Moto</class>
+
+        <!-- Entités pour la stratégie JOINED -->
+        <class>com.tp.heritage.joined.Employe</class>
+        <class>com.tp.heritage.joined.Developpeur</class>
+        <class>com.tp.heritage.joined.Manager</class>
+
+        <!-- Entités pour la stratégie TABLE_PER_CLASS -->
+        <class>com.tp.heritage.tableperclass.Produit</class>
+        <class>com.tp.heritage.tableperclass.Livre</class>
+        <class>com.tp.heritage.tableperclass.Electronique</class>
+
+        <properties>
+            <!-- Paramètres de connexion H2 Database en mémoire -->
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:tp_heritage_db;DB_CLOSE_DELAY=-1"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+
+            <!-- Propriétés Hibernate -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
